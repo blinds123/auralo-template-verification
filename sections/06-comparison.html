@@ -1,7 +1,4 @@
-<div
-  id="shopify-section-template--17453745111139__comparison_slider_WHKgrY"
-  class="shopify-section"
->
+<div id="shopify-section-template--17453745111139__comparison_slider_WHKgrY" class="shopify-section">
   <style data-shopify>
     .section-template--17453745111139__comparison_slider_WHKgrY-padding {
       padding-top: 12px;
@@ -108,43 +105,36 @@
       position: absolute;
       top: 10px;
       z-index: 5;
-      padding: 4px 12px;
-      font-size: 12px;
-      font-weight: 700;
+      padding: 6px 16px;
+      font-size: 14px;
+      font-weight: 800;
       border-radius: 4px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     .comparison-slider__before-text {
       left: 10px;
-      background: #000;
-      color: #fff;
+      background: #000000;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .comparison-slider__after-text {
       right: 10px;
-      background: #e5ff00;
-      color: #000;
+      background: #ffff00;
+      color: #000000;
+      border: 1px solid rgba(0, 0, 0, 0.1);
     }
   </style>
   <div
-    class="color-scheme-template--17453745111139__comparison_slider_WHKgrY color-background-1 gradient content-for-grouping animate-section animate--hidden desktop-hidden"
-  >
-    <div
-      class="page-width section-template--17453745111139__comparison_slider_WHKgrY-padding"
-    >
+    class="color-scheme-template--17453745111139__comparison_slider_WHKgrY color-background-1 gradient content-for-grouping animate-section animate--hidden desktop-hidden">
+    <div class="page-width section-template--17453745111139__comparison_slider_WHKgrY-padding">
       <div
-        class="content-and-comparison-slider section-group__container__child-grid content-and-comparison-slider--slider-first"
-      >
-        <div
-          class="content-container content-rte center animate-item animate-item--child index-0 desktop-index-1"
-        >
-          <div
-            class="content-container content-rte center animate-item animate-item--child index-0 desktop-index-1"
-          >
-            <h2
-              class="h2 title-with-highlight"
-              style="--hightlight-color: #000000"
-            >
+        class="content-and-comparison-slider section-group__container__child-grid content-and-comparison-slider--slider-first">
+        <div class="content-container content-rte center animate-item animate-item--child index-0 desktop-index-1">
+          <div class="content-container content-rte center animate-item animate-item--child index-0 desktop-index-1">
+            <h2 class="h2 title-with-highlight" style="--hightlight-color: #000000">
               {{COMPARISON_HEADLINE}}
             </h2>
             <div class="rte">
@@ -152,9 +142,7 @@
             </div>
           </div>
         </div>
-        <comparison-slider
-          class="comparison-slider animate-item animate-item--child index-1 desktop-index-0"
-        >
+        <comparison-slider class="comparison-slider animate-item animate-item--child index-1 desktop-index-0">
           <div class="comparison-slider__before-text color-accent-2">
             <h3>THE OLD</h3>
           </div>
@@ -164,43 +152,23 @@
           </div>
 
           <div class="comparison-slider__overlay color-background-1">
-            <img
-              src="{{COMPARISON_IMAGE_BEFORE}}"
-              alt="{{COMPARISON_BEFORE_ALT}}"
-              srcset="
+            <img src="{{COMPARISON_IMAGE_BEFORE}}" alt="{{COMPARISON_BEFORE_ALT}}" srcset="
                 {{COMPARISON_IMAGE_BEFORE}} 352w,
                 {{COMPARISON_IMAGE_BEFORE}} 450w,
                 {{COMPARISON_IMAGE_BEFORE}} 832w
-              "
-              width="450"
-              loading="lazy"
-            />
+              " width="450" loading="lazy" />
           </div>
-          <div
-            class="comparison-slider__line comparison-slider__line--classic color-background-1"
-          >
+          <div class="comparison-slider__line comparison-slider__line--classic color-background-1">
             <div class="comparison-slider__arrow-left">&nbsp</div>
             <div class="comparison-slider__arrow-right">&nbsp</div>
           </div>
-          <input
-            type="range"
-            class="comparison-slider__input"
-            min="0"
-            max="100"
-            value="50"
-          />
+          <input type="range" class="comparison-slider__input" min="0" max="100" value="50" />
           <div class="comparison-slider__underlay color-background-1">
-            <img
-              src="{{COMPARISON_IMAGE_AFTER}}"
-              alt="{{COMPARISON_AFTER_ALT}}"
-              srcset="
+            <img src="{{COMPARISON_IMAGE_AFTER}}" alt="{{COMPARISON_AFTER_ALT}}" srcset="
                 {{COMPARISON_IMAGE_AFTER}} 352w,
                 {{COMPARISON_IMAGE_AFTER}} 450w,
                 {{COMPARISON_IMAGE_AFTER}} 832w
-              "
-              width="450"
-              loading="lazy"
-            />
+              " width="450" loading="lazy" />
           </div>
         </comparison-slider>
       </div>

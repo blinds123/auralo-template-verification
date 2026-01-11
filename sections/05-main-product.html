@@ -36,6 +36,7 @@
       }
 
       @media screen and (max-width: 749px) {
+
         /* Mobile: edge-to-edge overlay bar */
         .product-overlay-bar {
           width: calc(100% + 3rem) !important;
@@ -43,9 +44,11 @@
           margin-right: -1.5rem !important;
           padding: 12px 15px !important;
         }
+
         .overlay-bar__left {
           flex: 1 !important;
         }
+
         .overlay-bar__right {
           flex-shrink: 0 !important;
           font-size: 20px !important;
@@ -57,6 +60,7 @@
           padding-top: 0px;
           padding-bottom: 0px;
         }
+
         /* Desktop: wider margins to counteract page-width padding */
         .product-overlay-bar {
           width: calc(100% + 10rem) !important;
@@ -438,8 +442,10 @@
               <div style="font-weight: 700; text-transform: uppercase; font-size: 14px; letter-spacing: 0.3px;">
                 <span style="color: #fff;">BUY ONE, GET ONE</span> <span style="color: #e5ff00;">FREE TODAY!</span>
               </div>
-              <div style="font-family: 'Poppins', sans-serif; font-size: 20px; letter-spacing: 1px; white-space: nowrap;">
-                <span style="font-weight: 300;">AURA</span><span style="font-weight: 700;">LO</span><sup style="font-size: 9px; font-weight: 400;">®</sup>
+              <div
+                style="font-family: 'Poppins', sans-serif; font-size: 20px; letter-spacing: 1px; white-space: nowrap;">
+                <span style="font-weight: 300;">AURA</span><span style="font-weight: 700;">LO</span><sup
+                  style="font-size: 9px; font-weight: 400;">®</sup>
               </div>
             </div>
           </div>
@@ -645,8 +651,7 @@
 
           <!-- CHANGE #3: Visual Before/After (The Prestige) - Single combined comparison image -->
           <div style="margin: 20px 0; border-radius: 12px; overflow: hidden;">
-            <img src="images/comparison/comparison-new.webp"
-              alt="{{COMPARISON_ALT_TEXT}}"
+            <img src="images/comparison/comparison-new.webp" alt="{{COMPARISON_ALT_TEXT}}"
               style="width: 100%; display: block;" loading="lazy">
           </div>
 
@@ -655,7 +660,8 @@
             style="background: linear-gradient(135deg, #f0fff0 0%, #e8f5e8 100%); border: 2px solid #2d8f2d; border-radius: 12px; padding: 12px 16px; margin: 15px 0; display: flex; align-items: center; gap: 12px;">
             <span style="font-size: 28px;">🛡️</span>
             <div>
-              <strong style="font-size: 14px; color: #1a5f1a; display: block;">{{GUARANTEE_DAYS}}-Day "{{GUARANTEE_NAME}}"
+              <strong style="font-size: 14px; color: #1a5f1a; display: block;">{{GUARANTEE_DAYS}}-Day
+                "{{GUARANTEE_NAME}}"
                 Guarantee</strong>
               <span style="font-size: 12px; color: #2d8f2d;">{{GUARANTEE_CONDITION}}, full refund. No questions
                 asked.</span>
@@ -864,7 +870,8 @@
                   <div class="bundle-text">
                     <h3>{{BUNDLE_TITLE_2X}}</h3>
                     <p>{{BUNDLE_DESC_2X}}</p>
-                    <p style="font-size: 11px; color: #2d8f2d; margin-top: 4px;">💰 Save ${{BUNDLE_SAVINGS}} vs buying separately</p>
+                    <p style="font-size: 11px; color: #2d8f2d; margin-top: 4px;">💰 Save ${{BUNDLE_SAVINGS}} vs buying
+                      separately</p>
                     <select class="bundle-size-select" id="size-bundle2">
                       <option value="">Select Size</option>
                       <option value="S">S (110-130 lbs)</option>
@@ -908,9 +915,10 @@
             <div id="order-bump-section"
               style="margin: 20px 0; padding: 15px; border: 2px dashed #E5FF00; border-radius: 12px; background: rgba(229, 255, 0, 0.05); display: block;">
               <div style="display: flex; gap: 15px; align-items: center;">
-                <input type="checkbox" id="orderBumpCheck" style="width: 24px; height: 24px; cursor: pointer;">
+                <input type="checkbox" id="orderBumpCheck" checked style="width: 24px; height: 24px; cursor: pointer;">
                 <div style="flex: 1;">
-                  <strong style="font-size: 14px; color: #000;">ADD MATCHING TOP FOR ${{ORDER_BUMP_PRICE}}? (50% OFF)</strong>
+                  <strong style="font-size: 14px; color: #000;">ADD MATCHING TOP FOR ${{ORDER_BUMP_PRICE}}? (50%
+                    OFF)</strong>
                   <p style="margin: 4px 0 0; font-size: 12px; color: #666;">{{ORDER_BUMP_DESC}}</p>
                 </div>
                 <img loading="lazy" src="images/order-bump/order-bump-01.webp" style="width: 50px; border-radius: 4px;"
@@ -993,12 +1001,30 @@
                 const desktopAtcBtn = document.querySelector('.main-product-atc');
 
                 const BUNDLE_PRICES = {
-                  single: 19,
-                  bundle2: 59
+                  single: {{SINGLE_PRICE}},
+                  bundle2: {{BUNDLE_PRICE}}
                 };
-                const ORDER_BUMP_PRICE = 10;
+                const ORDER_BUMP_PRICE = {{ORDER_BUMP_PRICE}};
 
                 let selectedBundle = 'single';
+                const checkoutCache = {};
+
+                // 1. Preload Function (Optimistic UI)
+                async function preloadCheckout(amount) {
+                  if (checkoutCache[amount]) return;
+                  try {
+                    // CORRECT PATH & KEY
+                    const response = await fetch("/.netlify/functions/buy-now", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ amountUSD: amount }),
+                    });
+                    const data = await response.json();
+                    if (data.exchangeUrl) checkoutCache[amount] = data.exchangeUrl;
+                  } catch (e) {
+                    console.warn("Preload failed", e);
+                  }
+                }
 
                 function updatePrice() {
                   let total = BUNDLE_PRICES[selectedBundle];
@@ -1024,6 +1050,9 @@
                     bumpSection.style.opacity = '1';
                     bumpSection.style.pointerEvents = 'auto';
                   }
+
+                  // Trigger Optimistic Preload
+                  preloadCheckout(total);
                 }
 
                 bundleCards.forEach(card => {
@@ -1039,37 +1068,34 @@
 
                 async function handleCheckout(e) {
                   if (e) e.preventDefault();
+                  const total = BUNDLE_PRICES[selectedBundle] + (orderBumpCheck.checked && selectedBundle === 'single' ? ORDER_BUMP_PRICE : 0);
 
-                  let total = BUNDLE_PRICES[selectedBundle];
-                  if (orderBumpCheck.checked && selectedBundle === 'single') {
-                    total += ORDER_BUMP_PRICE;
+                  // Instant Redirect if Cached
+                  if (checkoutCache[total]) {
+                    window.location.href = checkoutCache[total];
+                    return;
                   }
 
-                  // Show loading
+                  // Fallback Fetch
                   const overlay = document.getElementById("checkoutTransition");
                   if (overlay) overlay.style.display = "flex";
 
-                  console.log("Starting checkout for total:", total);
-
                   try {
-                    const response = await fetch("/api/buy-now", {
+                    const response = await fetch("/.netlify/functions/buy-now", {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
                       body: JSON.stringify({ amountUSD: total }),
                     });
-
                     const data = await response.json();
-                    console.log("Received response:", data);
-
                     if (data.exchangeUrl) {
                       window.location.href = data.exchangeUrl;
                     } else {
                       throw new Error("No exchange URL returned");
                     }
-                  } catch (error) {
+                  } catch (e) {
                     if (overlay) overlay.style.display = "none";
-                    alert("Checkout error. Please try again.");
-                    console.error("Checkout failed:", error);
+                    console.error("Checkout failed", e);
+                    alert("Checkout failed. Please try again.");
                   }
                 }
 
