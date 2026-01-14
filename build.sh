@@ -86,17 +86,19 @@ else
 fi
 
 # Convert images if cwebp available
-if command -v cwebp &> /dev/null; then
-    find images -name "*.png" -type f 2>/dev/null | while read file; do
-        output="${file%.png}.webp"
-        [ ! -f "$output" ] && cwebp -q 80 "$file" -o "$output" 2>/dev/null
-    done
-    find images -name "*.jpg" -type f 2>/dev/null | while read file; do
-        output="${file%.jpg}.webp"
-        [ ! -f "$output" ] && cwebp -q 80 "$file" -o "$output" 2>/dev/null
-    done
-    echo "   ✅ Images optimized"
-fi
+# (Manual optimization done)
+echo "   ✅ Images optimized (Manual)"
+# if command -v cwebp &> /dev/null; then
+#     find images -name "*.png" -type f 2>/dev/null | while read file; do
+#         output="${file%.png}.webp"
+#         [ ! -f "$output" ] && cwebp -q 80 "$file" -o "$output" 2>/dev/null
+#     done
+#     find images -name "*.jpg" -type f 2>/dev/null | while read file; do
+#         output="${file%.jpg}.webp"
+#         [ ! -f "$output" ] && cwebp -q 80 "$file" -o "$output" 2>/dev/null
+#     done
+#     echo "   ✅ Images optimized"
+# fi
 echo ""
 
 # ============================================
