@@ -115,6 +115,7 @@ cat \
   sections/05-main-product.html \
   sections/07-logos.html \
   sections/08-multirow.html \
+  sections/08b-testimonial-strip.html \
   sections/09-slideshow.html \
   sections/10-custom-html.html \
   sections/11-image-with-text.html \
