@@ -239,9 +239,11 @@ replace_var "{{FEATURE_HEADLINE_4}}" "$FEATURE_HEADLINE_4"
 replace_var "{{FEATURE_HEADING_1}}" "$FEATURE_HEADING_1"
 replace_var "{{FEATURE_HEADING_2}}" "$FEATURE_HEADING_2"
 replace_var "{{FEATURE_HEADING_3}}" "$FEATURE_HEADING_3"
+replace_var "{{FEATURE_HEADING_4}}" "$FEATURE_HEADING_4"
 replace_var "{{FEATURE_PARAGRAPH_1_1}}" "$FEATURE_PARAGRAPH_1_1"
 replace_var "{{FEATURE_PARAGRAPH_1_2}}" "$FEATURE_PARAGRAPH_1_2"
 replace_var "{{FEATURE_PARAGRAPH_2}}" "$FEATURE_PARAGRAPH_2"
+replace_var "{{FEATURE_PARAGRAPH_4}}" "$FEATURE_PARAGRAPH_4"
 replace_var "{{FEATURE_BENEFIT_TEXT}}" "$FEATURE_BENEFIT_TEXT"
 
 # =====================================================
