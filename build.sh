@@ -106,8 +106,22 @@ echo ""
 # ============================================
 echo "📄 Building index.html..."
 
-# Concatenate all sections
-cat sections/*.html > index.html
+# Concatenate HTML sections in specific order
+# Core structure based on Perry Belcher funnel
+cat \
+  sections/01-head.html \
+  sections/02-body-start.html \
+  sections/03-header.html \
+  sections/04-cart-drawer.html \
+  sections/05-main-product.html \
+  sections/07-logos.html \
+  sections/18-testimonials.html \
+  sections/06-comparison.html \
+  sections/08-multirow.html \
+  sections/14-faq.html \
+  sections/22-footer.html \
+  sections/23-scripts.html \
+  > index.html 2>/dev/null || true
 
 # Function to safely escape for sed
 escape_sed() {
