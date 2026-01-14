@@ -106,19 +106,29 @@ echo ""
 # ============================================
 echo "📄 Building index.html..."
 
-# Concatenate HTML sections in specific order
-# Core structure based on Perry Belcher funnel
+# Concatenate all sections
 cat \
   sections/01-head.html \
   sections/02-body-start.html \
   sections/03-header.html \
   sections/04-cart-drawer.html \
   sections/05-main-product.html \
-  sections/07-logos.html \
-  sections/18-testimonials.html \
   sections/06-comparison.html \
+  sections/07-logos.html \
   sections/08-multirow.html \
+  sections/09-slideshow.html \
+  sections/10-custom-html.html \
+  sections/11-image-with-text.html \
+  sections/12-image-banner.html \
+  sections/13-rich-text.html \
   sections/14-faq.html \
+  sections/15-newsletter.html \
+  sections/16-blog-posts.html \
+  sections/17-contact-form.html \
+  sections/18-testimonials.html \
+  sections/19-multirow.html \
+  sections/20-cta-banner.html \
+  sections/21-pre-footer.html \
   sections/22-footer.html \
   sections/23-scripts.html \
   > index.html 2>/dev/null || true
