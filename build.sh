@@ -115,8 +115,9 @@ cat \
   sections/05-main-product.html \
   sections/07-logos.html \
   sections/08-multirow.html \
-  sections/08b-testimonial-strip.html \
+  sections/08b-interstitial-1.html \
   sections/09-slideshow.html \
+  sections/09b-interstitial-2.html \
   sections/10-custom-html.html \
   sections/11-image-with-text.html \
   sections/12-image-banner.html \
@@ -357,6 +358,11 @@ replace_var "{{ROTATING_TESTIMONIAL_2}}" "$ROTATING_TESTIMONIAL_2"
 replace_var "{{ROTATING_TESTIMONIAL_3}}" "$ROTATING_TESTIMONIAL_3"
 replace_var "{{ROTATING_TESTIMONIAL_4}}" "$ROTATING_TESTIMONIAL_4"
 replace_var "{{ROTATING_TESTIMONIAL_5}}" "$ROTATING_TESTIMONIAL_5"
+
+replace_var "{{INTERSTITIAL_TESTIMONIAL_1_QUOTE}}" "$INTERSTITIAL_TESTIMONIAL_1_QUOTE"
+replace_var "{{INTERSTITIAL_TESTIMONIAL_1_AUTHOR}}" "$INTERSTITIAL_TESTIMONIAL_1_AUTHOR"
+replace_var "{{INTERSTITIAL_TESTIMONIAL_2_QUOTE}}" "$INTERSTITIAL_TESTIMONIAL_2_QUOTE"
+replace_var "{{INTERSTITIAL_TESTIMONIAL_2_AUTHOR}}" "$INTERSTITIAL_TESTIMONIAL_2_AUTHOR"
 
 # =====================================================
 # MAIN TESTIMONIALS (12)
