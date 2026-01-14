@@ -113,7 +113,6 @@ cat \
   sections/03-header.html \
   sections/04-cart-drawer.html \
   sections/05-main-product.html \
-  sections/06-comparison.html \
   sections/07-logos.html \
   sections/08-multirow.html \
   sections/09-slideshow.html \
@@ -237,6 +236,7 @@ replace_var "{{FEATURE_HEADLINE_3}}" "$FEATURE_HEADLINE_3"
 replace_var "{{FEATURE_HEADLINE_4}}" "$FEATURE_HEADLINE_4"
 replace_var "{{FEATURE_HEADING_1}}" "$FEATURE_HEADING_1"
 replace_var "{{FEATURE_HEADING_2}}" "$FEATURE_HEADING_2"
+replace_var "{{FEATURE_HEADING_3}}" "$FEATURE_HEADING_3"
 replace_var "{{FEATURE_PARAGRAPH_1_1}}" "$FEATURE_PARAGRAPH_1_1"
 replace_var "{{FEATURE_PARAGRAPH_1_2}}" "$FEATURE_PARAGRAPH_1_2"
 replace_var "{{FEATURE_PARAGRAPH_2}}" "$FEATURE_PARAGRAPH_2"
