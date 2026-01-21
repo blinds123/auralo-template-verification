@@ -1,227 +1,202 @@
-# Image Mapping Reference
+# Image Mapping - VARIABLE-BASED CONFIGURATION
 
-## Folder Structure (EXACT)
+## WORKFLOW
 
-```
-images/
-├── product/           # 5+ images - Product shots (ALSO HERO IMAGES)
-├── testimonials/      # 25 images - Used across multiple sections
-├── order-bump/        # 1-2 images - Order bump product only
-├── founder/           # 1 image - Founder story section only
-├── comparison/        # 2 images - Before/after comparison
-└── universal-assets/  # Trust badges, press logos, icons
-```
+1. **Prepare images** - Drop into correct folder with ANY name
+2. **Run auto-rename script** - Converts to .webp and names according to convention
+3. **Configure product.config** - Set image variables to point to correct files
+4. **Build** - Template uses variable paths from product.config
+5. **After success** - Delete original jpg/png files
 
 ---
 
-## EXACT Image Placement by Section
+## REQUIRED IMAGE STRUCTURE
 
-### Section 03: Hero
-
-**Images:** `images/product/product-01.webp` through `product-05.webp`
-
-- Main hero image: `product-01.webp`
-- Gallery thumbnails: `product-01.webp` through `product-05.webp`
-- TikTok comment overlays appear ON TOP of product images
-
-### Section 05: Gallery
-
-**Images:** `images/product/product-01.webp` through `product-05.webp`
-
-- Main large image: `product-01.webp`
-- Thumbnail strip: all 5 product images
-- Swipeable on mobile
-
-### Section 08: Pricing (Order Bump)
-
-**Images:** `images/order-bump/order-bump-01.webp`
-
-- Shows the order bump product
-- Appears next to checkbox: "Add [product] for just $10"
-- ONLY place order-bump images are used
-
-### Section 09: Features
-
-**Images:** `images/testimonials/testimonial-06.webp` through `testimonial-10.webp`
-
-- Each feature card can have a testimonial image
-- 4-6 features = testimonial images 6-10
-
-### Section 11: Comparison
-
-**Images:** `images/comparison/`
-
-- Before (bad): `comparison-01.webp`
-- After (good): `comparison-02.webp`
-- Side by side or slider
-
-### Section 12: Press Logos
-
-**Images:** `images/universal-assets/`
-
-- `press-01.webp` through `press-06.webp`
-- Trust badges, "As Seen In" logos
-
-### Section 13: Testimonial 1
-
-**Image:** `images/testimonials/testimonial-01.webp`
-
-### Section 14: Secret 1 (Vehicle)
-
-**Image:** `images/testimonials/testimonial-08.webp`
-
-### Section 15: Testimonial 2
-
-**Image:** `images/testimonials/testimonial-02.webp`
-
-### Section 16: Secret 2 (Internal)
-
-**Image:** `images/testimonials/testimonial-15.webp`
-
-### Section 17: Testimonial 3
-
-**Image:** `images/testimonials/testimonial-03.webp`
-
-### Section 18: Founder Story
-
-**Image:** `images/founder/founder-01.webp`
-
-- ONLY place founder image is used
-
-### Section 19: Testimonial 4
-
-**Image:** `images/testimonials/testimonial-04.webp`
-
-### Section 20: Secret 3 (External)
-
-**Image:** `images/testimonials/testimonial-22.webp`
-
-### Section 21: Testimonial 5
-
-**Image:** `images/testimonials/testimonial-05.webp`
-
-### Section 22: Segment Specific
-
-**Image:** `images/testimonials/testimonial-20.webp`
-
-### Section 23: FAQ
-
-**No images** - Text only accordion
-
-### Section 24: Final CTA
-
-**Images:** `images/product/product-01.webp` (optional product reminder)
-
-- Or trust badges from `universal-assets/`
-
-### Section 25: Footer
-
-**Images:** `images/universal-assets/`
-
-- Payment icons, trust badges
-- Logo if applicable
-
----
-
-## Testimonial Image Assignment (25 images)
-
-| Image               | Used In Section                 |
-| ------------------- | ------------------------------- |
-| testimonial-01.webp | Section 13: Testimonial 1       |
-| testimonial-02.webp | Section 15: Testimonial 2       |
-| testimonial-03.webp | Section 17: Testimonial 3       |
-| testimonial-04.webp | Section 19: Testimonial 4       |
-| testimonial-05.webp | Section 21: Testimonial 5       |
-| testimonial-06.webp | Section 09: Feature 1           |
-| testimonial-07.webp | Section 09: Feature 2           |
-| testimonial-08.webp | Section 14: Secret 1 (Vehicle)  |
-| testimonial-09.webp | Section 09: Feature 3           |
-| testimonial-10.webp | Section 09: Feature 4           |
-| testimonial-11.webp | Reviews section                 |
-| testimonial-12.webp | Reviews section                 |
-| testimonial-13.webp | Reviews section                 |
-| testimonial-14.webp | Reviews section                 |
-| testimonial-15.webp | Section 16: Secret 2 (Internal) |
-| testimonial-16.webp | Reviews section                 |
-| testimonial-17.webp | Reviews section                 |
-| testimonial-18.webp | Reviews section                 |
-| testimonial-19.webp | Reviews section                 |
-| testimonial-20.webp | Section 22: Segment Specific    |
-| testimonial-21.webp | Reviews section                 |
-| testimonial-22.webp | Section 20: Secret 3 (External) |
-| testimonial-23.webp | Reviews section                 |
-| testimonial-24.webp | Reviews section                 |
-| testimonial-25.webp | Reviews section                 |
-
----
-
-## Variable Naming Convention
-
-### Product/Hero Images
+### Product Images (Hero Carousel)
 
 ```
-HERO_IMAGE_1=images/product/product-01.webp
-HERO_IMAGE_2=images/product/product-02.webp
-HERO_IMAGE_3=images/product/product-03.webp
-HERO_IMAGE_4=images/product/product-04.webp
-HERO_IMAGE_5=images/product/product-05.webp
+images/product/
+├── product-01.webp  (REQUIRED)
+├── product-02.webp  (REQUIRED)
+├── product-03.webp  (REQUIRED)
+├── product-04.webp  (REQUIRED)
+├── product-05.webp  (REQUIRED)
+└── product-06.webp  (REQUIRED)
 ```
 
-### Testimonial Images
+### Testimonial Images (Features, Secrets, Reviews)
+
+**CONFIGURABLE via product.config variables - set FEATURE_IMAGE_1/2/3 and SECRET_IMAGE_1/2/3**
 
 ```
-TESTIMONIAL_IMAGE_1=images/testimonials/testimonial-01.webp
-...
-TESTIMONIAL_IMAGE_25=images/testimonials/testimonial-25.webp
+images/testimonials/
+├── testimonial-01.webp  (REQUIRED - Used by Features/Secrets/Reviews)
+├── testimonial-02.webp  (REQUIRED - Used by Features/Secrets/Reviews)
+├── testimonial-03.webp  (REQUIRED - Used by Features/Secrets/Reviews)
+├── testimonial-04.webp  (REQUIRED - Used by Features/Secrets/Reviews)
+├── testimonial-05.webp  (REQUIRED - Used by Features/Secrets/Reviews)
+└── (additional images as needed for reviews)
 ```
 
-### Order Bump Image
+**Default product.config assignment:**
 
-```
-ORDER_BUMP_IMAGE=images/order-bump/order-bump-01.webp
-```
+- FEATURE_IMAGE_1 → testimonial-01.webp
+- FEATURE_IMAGE_2 → testimonial-02.webp
+- FEATURE_IMAGE_3 → testimonial-03.webp
+- SECRET_IMAGE_1 → testimonial-04.webp
+- SECRET_IMAGE_2 → testimonial-05.webp
+- SECRET_IMAGE_3 → testimonial-01.webp (cycles)
 
 ### Founder Image
 
 ```
-FOUNDER_IMAGE=images/founder/founder-01.webp
+images/founder/
+└── founder-01.webp  (REQUIRED)
 ```
 
 ### Comparison Images
 
 ```
-COMPARISON_BAD_IMAGE=images/comparison/comparison-01.webp
-COMPARISON_GOOD_IMAGE=images/comparison/comparison-02.webp
+images/comparison/
+├── comparison-good.webp  (REQUIRED)
+└── comparison-bad.webp   (REQUIRED)
 ```
 
-### Universal Assets
+### Order Bump Image
 
 ```
-PRESS_LOGO_1=images/universal-assets/press-01.webp
-PRESS_LOGO_2=images/universal-assets/press-02.webp
-...
-TRUST_BADGE_1=images/universal-assets/trust-01.webp
-PAYMENT_ICONS=images/universal-assets/payment-icons.webp
+images/order-bump/
+└── order-bump-01.webp  (REQUIRED)
+```
+
+### Awards Images (Hardcoded)
+
+```
+images/awards/
+├── awards-1.webp  (REQUIRED)
+├── awards-2.webp  (REQUIRED)
+├── awards-3.webp  (REQUIRED)
+├── awards-4.webp  (REQUIRED)
+└── awards-5.webp  (REQUIRED)
 ```
 
 ---
 
-## CRITICAL RULES
+## IMAGE SECTIONS (Variable-based via product.config)
 
-1. **Product images = Hero images** - Same images, no separate hero folder
-2. **Order bump image** - ONLY used in pricing/order bump section
-3. **Founder image** - ONLY used in founder story section
-4. **Testimonial images** - Used for testimonials, features, secrets, segment, reviews
-5. **Comparison images** - ONLY used in comparison section
-6. **Universal assets** - Trust badges, press logos, payment icons
+| Section         | Images | product.config Variable | Default Path                                 |
+| --------------- | ------ | ----------------------- | -------------------------------------------- |
+| Hero Carousel   | 6      | PRODUCT_IMAGE_1-6       | `images/product/product-01 to 06.webp`       |
+| Hero Thumbnails | 5      | PRODUCT_IMAGE_1-5       | `images/product/product-01 to 05.webp`       |
+| Feature 1       | 1      | FEATURE_IMAGE_1         | `images/testimonials/testimonial-01.webp`    |
+| Feature 2       | 1      | FEATURE_IMAGE_2         | `images/testimonials/testimonial-02.webp`    |
+| Feature 3       | 1      | FEATURE_IMAGE_3         | `images/testimonials/testimonial-03.webp`    |
+| Secret 1        | 1      | SECRET_IMAGE_1          | `images/testimonials/testimonial-04.webp`    |
+| Secret 2        | 1      | SECRET_IMAGE_2          | `images/testimonials/testimonial-05.webp`    |
+| Secret 3        | 1      | SECRET_IMAGE_3          | `images/testimonials/testimonial-01.webp`    |
+| Founder Story   | 1      | FOUNDER_IMAGE           | `images/founder/founder-01.webp`             |
+| Comparison      | 2      | COMPARISON*IMAGE*\*     | `images/comparison/comparison-good/bad.webp` |
+| Order Bump      | 1      | ORDER_BUMP_IMAGE        | `images/order-bump/order-bump-01.webp`       |
+| Awards          | 5      | (hardcoded)             | `images/awards/awards-1 to 5.webp`           |
+| Reviews         | 12+    | TESTIMONIAL\_\*\_IMAGE  | `images/testimonials/testimonial-*.webp`     |
 
-## File Naming
+---
 
-All images should be WebP format with consistent naming:
+## PRICING (HARDCODED - ENFORCED BY VALIDATION)
 
-- `product-01.webp`, `product-02.webp`, etc.
-- `testimonial-01.webp` through `testimonial-25.webp`
-- `order-bump-01.webp`
-- `founder-01.webp`
-- `comparison-01.webp` (bad/before), `comparison-02.webp` (good/after)
-- `press-01.webp`, `trust-01.webp`, etc.
+| Variable              | Value | Enforcement                                    |
+| --------------------- | ----- | ---------------------------------------------- |
+| SINGLE_PRICE          | 19    | `tests/validate-config.sh` will FAIL if not 19 |
+| ORDER_BUMP_PRICE      | 10    | `tests/validate-config.sh` will FAIL if not 10 |
+| ORDER_BUMP_PRECHECKED | true  | Hardcoded in JS                                |
+
+---
+
+## IMAGE PREPARATION SCRIPT
+
+Run this to auto-convert and rename images:
+
+```bash
+#!/bin/bash
+# prepare-images.sh - Auto-convert and rename images
+
+# Convert product images
+cd images/product
+i=1; for f in *.{jpg,jpeg,png,PNG,JPG,JPEG} 2>/dev/null; do
+  [ -f "$f" ] && cwebp -q 85 "$f" -o "product-$(printf %02d $i).webp" && ((i++))
+done
+
+# Convert testimonial images
+cd ../testimonials
+i=1; for f in *.{jpg,jpeg,png,PNG,JPG,JPEG} 2>/dev/null; do
+  [ -f "$f" ] && cwebp -q 85 "$f" -o "testimonial-$(printf %02d $i).webp" && ((i++))
+done
+
+# Convert founder
+cd ../founder
+for f in *.{jpg,jpeg,png,PNG,JPG,JPEG} 2>/dev/null; do
+  [ -f "$f" ] && cwebp -q 85 "$f" -o "founder-01.webp" && break
+done
+
+# Convert comparison
+cd ../comparison
+for f in *good*.{jpg,jpeg,png,PNG,JPG,JPEG} 2>/dev/null; do
+  [ -f "$f" ] && cwebp -q 85 "$f" -o "comparison-good.webp" && break
+done
+for f in *bad*.{jpg,jpeg,png,PNG,JPG,JPEG} 2>/dev/null; do
+  [ -f "$f" ] && cwebp -q 85 "$f" -o "comparison-bad.webp" && break
+done
+
+# Convert order bump
+cd ../order-bump
+for f in *.{jpg,jpeg,png,PNG,JPG,JPEG} 2>/dev/null; do
+  [ -f "$f" ] && cwebp -q 85 "$f" -o "order-bump-01.webp" && break
+done
+
+# Convert awards
+cd ../awards
+i=1; for f in *.{jpg,jpeg,png,PNG,JPG,JPEG} 2>/dev/null; do
+  [ -f "$f" ] && cwebp -q 85 "$f" -o "awards-$i.webp" && ((i++))
+done
+
+echo "✅ All images converted to .webp"
+```
+
+---
+
+## VALIDATION COMMAND
+
+```bash
+# Check all required images exist
+for f in images/product/product-{01,02,03,04,05,06}.webp \
+         images/testimonials/testimonial-{01,02,03,04,05,06,07,08,09}.webp \
+         images/founder/founder-01.webp \
+         images/comparison/comparison-{good,bad}.webp \
+         images/order-bump/order-bump-01.webp \
+         images/awards/awards-{1,2,3,4,5}.webp; do
+  [ -f "$f" ] && echo "✓ $f" || echo "✗ MISSING: $f"
+done
+```
+
+---
+
+## POST-SUCCESS CLEANUP
+
+After the project is declared successful:
+
+```bash
+# Delete original files (keep only .webp)
+find images/ -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.JPG" -o -name "*.JPEG" -o -name "*.PNG" \) -delete
+echo "🧹 Cleaned up original files"
+```
+
+---
+
+## RULES
+
+1. **ALL images must be .webp format** - Use prepare-images.sh to convert
+2. **Naming is HARDCODED** - Template expects exact filenames
+3. **No configuration needed for images** - Just prepare images correctly
+4. **Features use 01-03, Secrets use 04-06** - NO COLLISION
+5. **Pricing is HARDCODED** - SINGLE_PRICE=19, ORDER_BUMP_PRICE=10 (validated)
+6. **Minimum required**: 6 product + 9 testimonial + 1 founder + 2 comparison + 1 order-bump + 5 awards = **24 images**
